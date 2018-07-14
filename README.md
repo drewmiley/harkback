@@ -3,5 +3,5 @@
 ### Usage
 
 ```
-node harkback.js
+node app.js
 ```
