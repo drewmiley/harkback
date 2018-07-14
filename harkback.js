@@ -1,14 +1,35 @@
 const fetch = require('node-fetch');
  
-fetch('https://github.com/')
-    .then(res => res.text())
-    .then(body => console.log(body));
- 
-fetch('https://api.github.com/users/github')
+fetch('https://randomuser.me/api/')
+    .then(response => {
+        if (response.ok) {
+            return response;
+        } else {
+            return Promise.reject({status: response.status});
+        }
+    })
     .then(res => res.json())
-    .then(json => console.log(json));
+    .then(json => {
+        return console.log(json);
+    })
+    .catch(err => {
+        console.error(err.status);
+    });
     
-fetch('http://domain.invalid/')
-    .catch(err => console.error(err));
+fetch('https://httpstat.us/500')
+    .then(response => {
+        if (response.ok) {
+            return response;
+        } else {
+            return Promise.reject({status: response.status});
+        }
+    })
+    .then(res => res.json())
+    .then(json => {
+        return console.log(json);
+    })
+    .catch(err => {
+        console.error(err.status);
+    });
 
 console.log('harkback');
