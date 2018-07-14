@@ -5,15 +5,16 @@ const getJson = res => res.json();
 const logJson = json => console.log(json);
 const logErrorStatus = err => console.error(err.status);
 
-const callbackFetch = url => {
-    return fetch(url)
+const harkbackFetch = (url, options = {}) => {
+    return fetch(url, options)
         .then(checkOkResponse)
         .then(getJson)
+        .then(logJson)
         .catch(logErrorStatus);
 }
  
-callbackFetch('https://randomuser.me/api/').then(logJson);
+harkbackFetch('https://randomuser.me/api/');
     
-callbackFetch('https://httpstat.us/500').then(logJson);
+harkbackFetch('https://httpstat.us/500');
 
 console.log('harkback');
