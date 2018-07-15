@@ -13,7 +13,7 @@ const errorFetch = harkbackFetch('https://httpstat.us/500');
 const addToNumberResult = number => () => {
     number++;
     console.log(number);
-}
+};
 const events = [
     { name: FETCH_SUCCESS, result: res => console.log(`JsonResponse UserEmail: ${ res.results[0].email }`) },
     { name: FETCH_FAILURE, result: err => console.log(`Error status code: ${ err.status }`) },
